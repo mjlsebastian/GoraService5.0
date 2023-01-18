@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
 
-
+const Port = process.env.Port || 3030;
 
 //Router
 const bookedRouter = require('./routes/Booked');
@@ -26,7 +26,7 @@ const userRouter = require('./routes/User');
 app.use('/user',userRouter);
 
 db.sequelize.sync().then(()=>{
-    app.listen(3001, ()=>{
+    app.listen(Port, ()=>{
         console.log("running on port http://localhost:3001")
     });
 });
